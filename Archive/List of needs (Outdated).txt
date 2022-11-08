@@ -1,0 +1,119 @@
+Retro style platform programming
+-Input
+--Mouse and keyboard
+---Direct input?
+--Controller
+---This will use the drivers for the xbox360 controller for windows (Don't ask me how i know it was painfull)
+
+-orgin of ideas and places of research
+--Megaman zero (weapons and movement and ranking and hitstun/iframes and level of priority of weapons will link a database type)
+--Castlevania (platforming)
+--devil may cry (combos)
+
+-weapons
+--Far range Gun
+---time of charging
+---3 lemons
+---level 1 charge
+---level 2 charge
+---level 3 full charge
+--short range sword
+---1st slash
+---2nd slash
+---3rd slash
+----up variation
+----down variation
+---upward slash
+---Longe range slash
+----wave of slash
+---Down spike stab
+---skull crusher
+----short
+----long
+--Shield
+---blocking projectiles
+---parrying meele
+---Throwing the shield
+--the "pogo" staff stick
+---stab 1
+---stab 2
+---stab 3
+---charge attack
+----Spin attack
+---air attack
+----down stab
+----normal air one stab
+--chain rod
+---one stab
+---attaching
+----held down
+----identifier to bring enemies closer or going towards enemies
+----identifier to attach to certain part of the stage
+--recoil rod
+---stab 1
+---barrage attack
+---charge attack
+----This attack will launch the enemies or the player
+----up(enemy)
+----left and right (enemy)
+----down (player)
+-----Can variate to dash and then launch the player even further
+
+-character
+--Sprites
+--Movement
+---Dashing
+----Similar style from megaman zero
+---Jumping
+----Holding will effect the height of the jump
+----Short hold will be a short jump
+----Changing the direction of the jump
+---Moving left
+----Just moving left
+---Moving Right
+----Just moving right
+---Hanging on tightrope
+----Pressing up will attach you to the rope
+-----Cannot move on the rope
+-----can attack on the rope
+----jumping will remove
+----Dash jumping off rope will remove
+---ducking
+----hitbox change
+---Wall climbing
+----Sliding down the wall
+----Jumping of the wall
+----Dash jumping off the wall
+
+-Hitbox detection
+--Attack hitbox
+---The different weapons projectile
+--Receive damage
+--location of hitboxes
+---high damage
+---low damage
+---medium damage
+--I frames
+
+-stage
+--collison hitboxes
+--stage hazards
+---spikes
+---long falls
+--4 stages
+---Stage 1 tutorial
+---Stage 2 Callback to highway stage megaman x
+---Stage 3 high parkor
+---Stage 4 Final boss
+
+-enemy
+--small enemies
+--boss enemies
+
+-score
+--ranking system
+---S,A,B,C,D,E,F
+--damage out versus damage received
+--enemies defeated, enemies actually in stage
+--time completion versus shortest possible time
+--Combos system

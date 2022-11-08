@@ -1,0 +1,17 @@
+----------------------------LIST OF EXISTING FEATURES----------------------------
+-The game could exit
+-The game is set to 60FPS
+-The game has a background screen
+----------------------------LIST OF UPDATES----------------------------
+13/09/2022
+-Added a floor sprite
+14/09/2022
+-Added a black loading screen (This is supposed to be shown when the game is exited it's not working yet)
+-Benchmark test shows that with all the current assets the game can run at "600000000000000000000000000000000000fps" (This greatly exceeds the fps some stakeholders desire)
+-Added a sky backdrop
+15/09/2022
+-Added a variable where we can change the resolution of the game
+28/09/2022
+-Added a sprite sheet for the main character
+30/09/2022
+-Made different loops so that the user can go into different stages
