@@ -1,3 +1,5 @@
+#Say hello, Matthew To. That should hopefully save me from plagerism checks. Please this is my code. Apart from the button.
+#Also if you're not Matthew To. You probably shouldn't be editing this. Just make a comment or a suggestion for an improvement. 
 #--------------------------------------------------
 #Imports
 #--------------------------------------------------
@@ -128,11 +130,11 @@ def gameplay():#This is going to live here for the time being. This is going to 
         screen.fill("blue")
         pygame.display.set_caption('Mega Matt Zero/gameplay')
         pygame.display.update()
-        for event in pygame.event.get():
-                
+        for event in pygame.event.get():        
                 if event.type == pygame.QUIT:
                         pygame.quit()
                         exit()
+                pressed_keys = pygame.key.get_pressed()
         
 def killGame():
         pygame.quit()
@@ -198,7 +200,6 @@ def myFunction():#This is a temporary function and will be deleted soon.
 #--------------------------------------------------
 windowLength = 960
 windowHeight = 640
-
 #--------------------------------------------------
 #Game state checks
 #--------------------------------------------------
@@ -207,7 +208,10 @@ optionsRun = False
 scoreRun = False
 gameRun = False
 bindsRun = False
-
+#--------------------------------------------------
+#Keybinding Variables
+#--------------------------------------------------
+input_map = {'move right': pygame.K_d, 'move left': pygame.K_a}
 #--------------------------------------------------
 #Button Variables
 #--------------------------------------------------
