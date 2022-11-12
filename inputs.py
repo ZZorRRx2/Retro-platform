@@ -12,14 +12,21 @@ import pygame
 from sys import exit
 pygame.init()
 
+#--------------------------------------------------
+#Varibles
+#--------------------------------------------------
 screen = pygame.display.set_mode((300,200))
 input_map = {'move right': pygame.K_d, 'move left': pygame.K_a}
 
+#--------------------------------------------------
+#Main loop for this line of code
+#--------------------------------------------------
 while True:
         for event in pygame.event.get(): #This goes through a loop to check every input in the game
                 if event.type == pygame.QUIT: #This is when someone tries to exit the game
                         pygame.quit() #Stops pygame
                         exit() #Ends the loop
+                        
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[input_map['move right']]:
                 #print("move right")

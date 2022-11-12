@@ -1,12 +1,19 @@
+#--------------------------------------------------
+#Details
+#--------------------------------------------------
+#This is the main section of code where we all come together as one big happy bug
 #Say hello, Matthew To. That should hopefully save me from plagerism checks. Please this is my code. Apart from the button.
-#Also if you're not Matthew To. You probably shouldn't be editing this. Just make a comment or a suggestion for an improvement. 
+#Also if you're not Matthew To. You probably shouldn't be editing this. Just make a comment or a suggestion for an improvement.
+
 #--------------------------------------------------
 #Imports
 #--------------------------------------------------
 import pygame
+import playerActions
 from sys import exit
 pygame.init()
 font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
+
 #--------------------------------------------------
 #Navigation functions
 #--------------------------------------------------
@@ -76,6 +83,7 @@ def openBinds():
 def draw_text(text, font, text_col, x, y): #This function imports text
         img = font.render(text, True, text_col)
         screen.blit(img, (x,y))
+        
 #--------------------------------------------------
 #Menu functions
 #--------------------------------------------------
@@ -126,7 +134,7 @@ def scores():
                 if event.type == pygame.QUIT:
                         pygame.quit()
                         exit()
-def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully.
+def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
         screen.fill("blue")
         pygame.display.set_caption('Mega Matt Zero/gameplay')
         pygame.display.update()
@@ -134,11 +142,25 @@ def gameplay():#This is going to live here for the time being. This is going to 
                 if event.type == pygame.QUIT:
                         pygame.quit()
                         exit()
-                pressed_keys = pygame.key.get_pressed()
+        pressed_keys = pygame.key.get_pressed()
+        if pressed_keys[input_map["move right"]]:
+                playerActions.actionRight()
+        if pressed_keys[input_map["move left"]]:
+                playerActions.actionLeft()
+        if pressed_keys[input_map["jump up"]]:
+                playerActions.actionJump()
+        if pressed_keys[input_map["move dash"]]:
+                playerActions.actionDash()
+        if pressed_keys[input_map["hold up"]]:
+                playerActions.actionHoldUp()
+        if pressed_keys[input_map["hold down"]]:
+                playerActions.actionHoldDown()
+                
         
 def killGame():
         pygame.quit()
         exit()
+        
 #--------------------------------------------------
 #Button functions
 #--------------------------------------------------
@@ -192,7 +214,7 @@ class Button(): # This code is taken from = https://www.thepythoncode.com/articl
         ])
                 screen.blit(self.buttonSurface, self.buttonRect)
 
-def myFunction():#This is a temporary function and will be deleted soon.
+def myFunction():#This is a temporary function and will be deleted soon. Maybe never
         print('Button Pressed')
 
 #--------------------------------------------------
@@ -200,6 +222,7 @@ def myFunction():#This is a temporary function and will be deleted soon.
 #--------------------------------------------------
 windowLength = 960
 windowHeight = 640
+
 #--------------------------------------------------
 #Game state checks
 #--------------------------------------------------
@@ -208,10 +231,12 @@ optionsRun = False
 scoreRun = False
 gameRun = False
 bindsRun = False
+
 #--------------------------------------------------
 #Keybinding Variables
 #--------------------------------------------------
-input_map = {'move right': pygame.K_d, 'move left': pygame.K_a}
+input_map = {"move right": pygame.K_d, "move left": pygame.K_a, "jump up": pygame.K_SPACE, "move dash": pygame.K_LSHIFT, "hold up": pygame.K_w, "hold down": pygame.K_s}
+
 #--------------------------------------------------
 #Button Variables
 #--------------------------------------------------
