@@ -19,7 +19,7 @@ def actionRight():
 def actionLeft():
     print("Go left")
     
-def acctionDash():
+def actionDash():
     print("Dash")
 
 def actionJump():
