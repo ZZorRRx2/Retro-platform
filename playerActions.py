@@ -30,3 +30,13 @@ def actionHoldUp():
     
 def actionHoldDown():
     print("hold down")
+    
+def actionGunAttack():
+    print("Gun shot")
+
+def actionSwordAttack():
+    print("Sword Attack")
+
+#--------------------------------------------------
+#State Variables
+#--------------------------------------------------

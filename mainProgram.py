@@ -155,6 +155,10 @@ def gameplay():#This is going to live here for the time being. This is going to 
                 playerActions.actionHoldUp()
         if pressed_keys[input_map["hold down"]]:
                 playerActions.actionHoldDown()
+        if pressed_keys[input_map["gun attack"]]:
+                playerActions.actionGunAttack()
+        if pressed_keys[input_map["sword attack"]]:
+                playerActions.actionSwordAttack()
                 
         
 def killGame():
@@ -235,7 +239,7 @@ bindsRun = False
 #--------------------------------------------------
 #Keybinding Variables
 #--------------------------------------------------
-input_map = {"move right": pygame.K_d, "move left": pygame.K_a, "jump up": pygame.K_SPACE, "move dash": pygame.K_LSHIFT, "hold up": pygame.K_w, "hold down": pygame.K_s}
+input_map = {"move right": pygame.K_d, "move left": pygame.K_a, "jump up": pygame.K_SPACE, "move dash": pygame.K_LSHIFT, "hold up": pygame.K_w, "hold down": pygame.K_s, "gun attack": pygame.K_j, "sword attack": pygame.K_k}
 
 #--------------------------------------------------
 #Button Variables
