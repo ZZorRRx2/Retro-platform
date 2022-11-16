@@ -137,6 +137,8 @@ def scores():
                         exit()
 def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
         screen.fill("blue")
+        pygame.draw.rect(screen,"grey" ,(0,0,50,640))
+        pygame.draw.rect(screen,"grey" , (910,0,50,640))
         pygame.display.set_caption('Mega Matt Zero/gameplay')
         pygame.display.update()
         for event in pygame.event.get():        
@@ -145,22 +147,21 @@ def gameplay():#This is going to live here for the time being. This is going to 
                         exit()
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[input_map["move right"]]:
-                playerActions.actionRight()
+                playerActionsModule.actionRight()
         if pressed_keys[input_map["move left"]]:
-                playerActions.actionLeft()
+                playerActionsModule.actionLeft()
         if pressed_keys[input_map["jump up"]]:
-                playerActions.actionJump()
+                playerActionsModule.actionJump()
         if pressed_keys[input_map["move dash"]]:
-                playerActions.actionDash()
+                playerActionsModule.actionDash()
         if pressed_keys[input_map["hold up"]]:
-                playerActions.actionHoldUp()
-                print(playerActions.upModifier)
+                playerActionsModule.actionHoldUp()
         if pressed_keys[input_map["hold down"]]:
-                playerActions.actionHoldDown()
+                playerActionsModule.actionHoldDown()
         if pressed_keys[input_map["gun attack"]]:
-                playerActions.actionGunAttack()
+                playerActionsModule.actionGunAttack()
         if pressed_keys[input_map["sword attack"]]:
-                playerActions.actionSwordAttack()
+                playerActionsModule.actionSwordAttack()
                 
         
 def killGame():
