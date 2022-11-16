@@ -9,7 +9,8 @@
 #Imports
 #--------------------------------------------------
 import pygame
-import playerActions
+import playerActionsModule
+import buttonObjectModule
 from sys import exit
 pygame.init()
 font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
@@ -153,6 +154,7 @@ def gameplay():#This is going to live here for the time being. This is going to 
                 playerActions.actionDash()
         if pressed_keys[input_map["hold up"]]:
                 playerActions.actionHoldUp()
+                print(playerActions.upModifier)
         if pressed_keys[input_map["hold down"]]:
                 playerActions.actionHoldDown()
         if pressed_keys[input_map["gun attack"]]:
@@ -220,7 +222,6 @@ class Button(): # This code is taken from = https://www.thepythoncode.com/articl
 
 def myFunction():#This is a temporary function and will be deleted soon. Maybe never
         print('Button Pressed')
-
 #--------------------------------------------------
 #Graphic variables
 #--------------------------------------------------

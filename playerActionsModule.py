@@ -26,7 +26,9 @@ def actionJump():
     print("Jump")
     
 def actionHoldUp():
+    upModifier = True
     print("hold up")
+    print(upModifier)
     
 def actionHoldDown():
     print("hold down")
@@ -40,3 +42,7 @@ def actionSwordAttack():
 #--------------------------------------------------
 #State Variables
 #--------------------------------------------------
+upModifier = False
+DownModifier = False
+inAirModifier = False
+dashModifier = False
