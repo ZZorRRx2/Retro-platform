@@ -18,6 +18,16 @@ font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is
 #--------------------------------------------------
 #Functions
 #--------------------------------------------------
+class Player(pygame.sprite.Sprite): #Using this tutorial to get a playermodel and it's rectangles into my environment https://opensource.com/article/17/12/game-python-add-a-player
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.images = []
+        for i in range(1, 5):
+            img = pygame.image.load(os.path.join('images', 'Zero' + str(i) + '.png')).convert()
+            self.images.append(img)
+            self.image = self.images[0]
+            self.rect = self.image.get_rect()
+            
 def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
     #(xLocation, yLocation,xSize,Ysize)
     #full resolution is 960, 640
@@ -64,4 +74,3 @@ test_font = pygame.font.Font(None, 50) #This imports the font
 #Keybinding Variables
 #--------------------------------------------------
 input_map = {"move right": pygame.K_d, "move left": pygame.K_a, "jump up": pygame.K_SPACE, "move dash": pygame.K_LSHIFT, "hold up": pygame.K_w, "hold down": pygame.K_s, "gun attack": pygame.K_j, "sword attack": pygame.K_k}
-
