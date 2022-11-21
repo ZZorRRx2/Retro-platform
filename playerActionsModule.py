@@ -28,7 +28,6 @@ def actionJump():
 def actionHoldUp():
     upModifier = True
     print("hold up")
-    print(upModifier)
     
 def actionHoldDown():
     print("hold down")
