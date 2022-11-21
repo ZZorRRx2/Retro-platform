@@ -21,23 +21,26 @@ font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is
 class Player(pygame.sprite.Sprite): #Using this tutorial to get a playermodel and it's rectangles into my environment https://opensource.com/article/17/12/game-python-add-a-player
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.images = []
-        for i in range(1, 5):
-            img = pygame.image.load(os.path.join('images', 'Zero' + str(i) + '.png')).convert()
-            self.images.append(img)
-            self.image = self.images[0]
-            self.rect = self.image.get_rect()
-            
+        self.heroIdle = []
+        for i in range(1,9):
+            self.img = pygame.image.load("graphics/Player/stand"+str(i)+".png").convert_alpha
+            #self.heroIdle.append(img)
+        #self.image = self.hero.Idle[1]
+        #self.rect = pygame.rect(self.image)
+        def update():
+            self.counter + self.counter +0.016
+            self.display = pygame.display.get_surface()
+            self.display.blit(self.img,(480,320))            
 def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
     #(xLocation, yLocation,xSize,Ysize)
     #full resolution is 960, 640
+    player = Player()
     screen.fill("black")
     pygame.draw.rect(screen,"grey" , (0,0,windowLength/18.2,windowHeight))#left Wall
     pygame.draw.rect(screen,"grey" , (windowLength/1.05,0,windowLength/18.2,windowHeight))#right Wall
     pygame.draw.rect(screen,"grey", (0,0,windowLength,windowHeight/10.67))#ceiling
     pygame.draw.rect(screen,"grey",(0,windowHeight/1.10344,windowLength,windowHeight/10.67))#floor
     pygame.display.set_caption('Mega Matt Zero/gameplay')
-    pygame.display.update()
     for event in pygame.event.get():        
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -58,7 +61,9 @@ def gameplay():#This is going to live here for the time being. This is going to 
     if pressed_keys[input_map["gun attack"]]:
         playerActionsModule.actionGunAttack()
     if pressed_keys[input_map["sword attack"]]:
-        playerActionsModule.actionSwordAttack()
+        playerActionsModule.actionSwordAttack
+    #We need an update    
+    pygame.display.update()
 
 #--------------------------------------------------
 #Graphics
@@ -66,9 +71,11 @@ def gameplay():#This is going to live here for the time being. This is going to 
 windowLength = 960
 windowHeight = 640
 screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
+display = pygame.display.get_surface()
 pygame.display.set_caption('main action')
 clock = pygame.time.Clock() #Makes a clock for it to click
 test_font = pygame.font.Font(None, 50) #This imports the font
+
 
 #--------------------------------------------------
 #Keybinding Variables
