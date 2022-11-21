@@ -23,7 +23,7 @@ class Player(pygame.sprite.Sprite): #Using this tutorial to get a playermodel an
         pygame.sprite.Sprite.__init__(self)
         self.heroIdle = []
         for i in range(1,9):
-            self.img = pygame.image.load("graphics/Player/stand"+str(i)+".png").convert_alpha
+            self.img = pygame.image.load("graphics/Player/stand"+str(i)+".jpg").convert_alpha
             #self.heroIdle.append(img)
         #self.image = self.hero.Idle[1]
         #self.rect = pygame.rect(self.image)
