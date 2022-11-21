@@ -23,14 +23,15 @@ class Player(pygame.sprite.Sprite): #Using this tutorial to get a playermodel an
         pygame.sprite.Sprite.__init__(self)
         self.heroIdle = []
         for i in range(1,9):
-            self.img = pygame.image.load("graphics/Player/stand"+str(i)+".png").convert_alpha
+            self.img = pygame.image.load("graphics/Player/stand"+str(i)+".jpg").convert_alpha
             #self.heroIdle.append(img)
         #self.image = self.hero.Idle[1]
         #self.rect = pygame.rect(self.image)
         def update():
             self.counter + self.counter +0.016
             self.display = pygame.display.get_surface()
-            self.display.blit(self.img,(480,320))            
+            self.display.blit(self.img,(480,320))
+            
 def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
     #(xLocation, yLocation,xSize,Ysize)
     #full resolution is 960, 640

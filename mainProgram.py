@@ -193,8 +193,6 @@ class Button(): # This code is taken from = https://www.thepythoncode.com/articl
         ])
                 screen.blit(self.buttonSurface, self.buttonRect)
 
-def myFunction():#This is a temporary function and will be deleted soon. Maybe never
-        print('Button Pressed')
 #--------------------------------------------------
 #Graphic variables
 #--------------------------------------------------
@@ -232,7 +230,6 @@ bindObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, b
 screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
 pygame.display.set_caption('main action')
 clock = pygame.time.Clock() #Makes a clock for it to click
-test_font = pygame.font.Font(None, 50) #This imports the font
 
 #--------------------------------------------------
 #Importing images
