@@ -4,11 +4,12 @@
 Better documentation can be found on:
 https://docs.google.com/document/d/1lMcpJ2Ed9Rjp0oi873fTmWrP4RKuB8lMln2bM9TSBH8/edit?usp=sharing
 
-----------------------------LIST OF EXISTING FEATURES----------------------------
+LIST OF EXISTING FEATURES
 -The game could exit
 -The game is set to 60FPS
 -The game has a background screen
-----------------------------LIST OF UPDATES----------------------------
+
+LIST OF UPDATES
 13/09/2022
 -Added a floor sprite
 14/09/2022
