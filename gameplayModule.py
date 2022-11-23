@@ -7,6 +7,8 @@
 #Imports
 #--------------------------------------------------
 import pygame
+import playerSpriteClassModule
+from playerSpriteClassModule import Player
 from sys import exit
 pygame.init()
 font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
@@ -17,7 +19,6 @@ font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is
 def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
     #(xLocation, yLocation,xSize,Ysize)
     #full resolution is 960, 640
-    player = Player()
     #this will display the images
     screen.fill("black")
     pygame.draw.rect(screen,"grey" , (0,0,windowLength/18.2,windowHeight))#left Wall
@@ -47,7 +48,8 @@ def gameplay():#This is going to live here for the time being. This is going to 
         playerActionsModule.actionGunAttack()
     if pressed_keys[input_map["sword attack"]]:
         playerActionsModule.actionSwordAttack
-    #We need an update    
+    #We need an update
+    playerSpriteClassModule.all_sprites.draw(screen)
     pygame.display.update()
 
 #--------------------------------------------------
