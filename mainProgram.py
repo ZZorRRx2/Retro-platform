@@ -9,7 +9,6 @@
 #Imports
 #--------------------------------------------------
 import pygame
-import playerActionsModule
 import buttonObjectModule
 import gameplayModule
 from buttonObjectModule import Button
@@ -79,7 +78,7 @@ def openBinds():
         scoreRun = False
         gameRun = False
         bindsRun = True
-        
+
 #--------------------------------------------------
 #Graphics texts
 #--------------------------------------------------
@@ -195,12 +194,6 @@ class Button(): # This code is taken from = https://www.thepythoncode.com/articl
                 screen.blit(self.buttonSurface, self.buttonRect)
 
 #--------------------------------------------------
-#Graphic variables
-#--------------------------------------------------
-windowLength = 960
-windowHeight = 640
-
-#--------------------------------------------------
 #Game state checks
 #--------------------------------------------------
 menuRun = True
@@ -228,6 +221,8 @@ bindObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, b
 #--------------------------------------------------
 #Graphics
 #--------------------------------------------------
+windowLength = 960
+windowHeight = 640
 screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
 pygame.display.set_caption('main action')
 clock = pygame.time.Clock() #Makes a clock for it to click
