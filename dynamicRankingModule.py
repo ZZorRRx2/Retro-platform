@@ -15,6 +15,7 @@ pygame.init()
 #--------------------------------------------------
 defGiveDamage(attackScore):
     #stuff
+    print()#this is so that the red line doesn't appear
 #--------------------------------------------------
 #Variables
 #--------------------------------------------------

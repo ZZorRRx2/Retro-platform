@@ -14,6 +14,7 @@ font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is
 #--------------------------------------------------
 #Button functions
 #--------------------------------------------------
+#I've just made some edits to it make it suit better for my program
 class Button(): # This code is taken from = https://www.thepythoncode.com/article/make-a-button-using-pygame-in-python
     #I've just made some edits to it make it suit better for my program
     def __init__(self, x, y, width, height, buttonText='Button', onclickFunction=None, onePress=False):
@@ -64,9 +65,6 @@ class Button(): # This code is taken from = https://www.thepythoncode.com/articl
                 ])
         screen.blit(self.buttonSurface, self.buttonRect)
 
-def myFunction():#This is a temporary function and will be deleted soon. Maybe never
-    print('Button Pressed')
-    
 #--------------------------------------------------
 #Main module
 #--------------------------------------------------

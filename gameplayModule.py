@@ -1,41 +1,24 @@
 #--------------------------------------------------
 #Details
 #--------------------------------------------------
-#This is the main section of code where we all come together as one big happy bug
-#Say hello, Matthew To. That should hopefully save me from plagerism checks. Please this is my code. Apart from the button.
-#Also if you're not Matthew To. You probably shouldn't be editing this. Just make a comment or a suggestion for an improvement.
+#This is the game section of code where it's actually really horrible. I hate it here.
 
 #--------------------------------------------------
 #Imports
 #--------------------------------------------------
 import pygame
-import playerActionsModule
-import buttonObjectModule
 from sys import exit
 pygame.init()
 font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
 
 #--------------------------------------------------
 #Functions
-#--------------------------------------------------
-class Player(pygame.sprite.Sprite): #Using this tutorial to get a playermodel and it's rectangles into my environment https://opensource.com/article/17/12/game-python-add-a-player
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.heroIdle = []
-        for i in range(1,9):
-            self.img = pygame.image.load("graphics/Player/stand"+str(i)+".jpg").convert_alpha
-            #self.heroIdle.append(img)
-        #self.image = self.hero.Idle[1]
-        #self.rect = pygame.rect(self.image)
-        def update():
-            self.counter + self.counter +0.016
-            self.display = pygame.display.get_surface()
-            self.display.blit(self.img,(480,320))
-            
+#--------------------------------------------------     
 def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
     #(xLocation, yLocation,xSize,Ysize)
     #full resolution is 960, 640
     player = Player()
+    #this will display the images
     screen.fill("black")
     pygame.draw.rect(screen,"grey" , (0,0,windowLength/18.2,windowHeight))#left Wall
     pygame.draw.rect(screen,"grey" , (windowLength/1.05,0,windowLength/18.2,windowHeight))#right Wall
@@ -45,7 +28,8 @@ def gameplay():#This is going to live here for the time being. This is going to 
     for event in pygame.event.get():        
         if event.type == pygame.QUIT:
             pygame.quit()
-            exit()
+            exit
+    #This checks user inputs
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[input_map["move right"]]:
         playerActionsModule.actionRight()
@@ -67,6 +51,45 @@ def gameplay():#This is going to live here for the time being. This is going to 
     pygame.display.update()
 
 #--------------------------------------------------
+#UserInputs
+#--------------------------------------------------
+def actionRight():
+    print("Go right")
+
+def actionLeft():
+    print("Go left")
+    
+def actionDash():
+    print("Dash")
+
+def actionJump():
+    print("Jump")
+    
+def actionHoldUp():
+    print("hold up")
+    
+def actionHoldDown():
+    print("hold down")
+    
+def actionGunAttack():
+    print("Gun shot")
+
+def actionSwordAttack():
+    print("Sword Attack")
+
+#--------------------------------------------------
+#State Variables
+#--------------------------------------------------
+rightModifier = False
+LeftModifier = False
+upModifier = False
+DownModifier = False
+jumpModifier = False
+dashModifier = False
+gunModifier = False
+swordModifier = False
+
+#--------------------------------------------------
 #Graphics
 #--------------------------------------------------
 windowLength = 960
@@ -77,6 +100,9 @@ pygame.display.set_caption('main action')
 clock = pygame.time.Clock() #Makes a clock for it to click
 test_font = pygame.font.Font(None, 50) #This imports the font
 
+#--------------------------------------------------
+#Hero class varibles
+#--------------------------------------------------
 
 #--------------------------------------------------
 #Keybinding Variables
