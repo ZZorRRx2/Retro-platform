@@ -17,19 +17,18 @@ font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is
 #Functions
 #--------------------------------------------------     
 def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
+    for event in pygame.event.get():        
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit    
     #(xLocation, yLocation,xSize,Ysize)
     #full resolution is 960, 640
-    #this will display the images
+    pygame.display.set_caption('Mega Matt Zero/gameplay')
     screen.fill("black")
     pygame.draw.rect(screen,"grey" , (0,0,windowLength/18.2,windowHeight))#left Wall
     pygame.draw.rect(screen,"grey" , (windowLength/1.05,0,windowLength/18.2,windowHeight))#right Wall
     pygame.draw.rect(screen,"grey", (0,0,windowLength,windowHeight/10.67))#ceiling
     pygame.draw.rect(screen,"grey",(0,windowHeight/1.10344,windowLength,windowHeight/10.67))#floor
-    pygame.display.set_caption('Mega Matt Zero/gameplay')
-    for event in pygame.event.get():        
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            exit
     #This checks user inputs
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[input_map["move right"]]:
