@@ -10,6 +10,7 @@
 #--------------------------------------------------
 import pygame
 import buttonObjectModule
+import buttonFunctionModule
 import gameplayModule
 from buttonObjectModule import Button
 from sys import exit
@@ -93,7 +94,7 @@ def menu():
         screen.fill("red")
         pygame.display.set_caption('Mega Matt Zero')
         draw_text("C:Mega Matt Zero/", font, 'black', 30, 50)
-        for object in menuObjects:
+        for object in buttonObjectModule.menuObjects:
                 object.process()
         pygame.display.update()
         for event in pygame.event.get(): 
@@ -242,17 +243,17 @@ while True: #This manages where the game is going to run. Menu options or the ga
                 if event.type == pygame.QUIT: #This is when someone tries to exit the game
                         pygame.quit() #Stops pygame
                         exit() #Ends the loop    
-        if menuRun == True:
+        if buttonFunctionModule.menuRun == True:
                 menu()
                 
-        if optionsRun == True:
+        if buttonFunctionModule.optionsRun == True:
                 options()
                 
-        if scoreRun == True:
+        if buttonFunctionModule.scoreRun == True:
                 scores()
                 
-        if gameRun == True:
+        if buttonFunctionModule.gameRun == True:
                 gameplayModule.gameplay()
                 
-        if bindsRun == True:
+        if buttonFunctionModule.bindsRun == True:
                 changeKeyBinds()
