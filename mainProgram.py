@@ -12,6 +12,7 @@ import pygame
 import buttonObjectModule
 import buttonFunctionModule
 import gameplayModule
+import windowSizeModule
 from buttonObjectModule import Button
 from sys import exit
 pygame.init()
@@ -22,7 +23,7 @@ font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is
 #--------------------------------------------------
 def draw_text(text, font, text_col, x, y): #This function imports text
         img = font.render(text, True, text_col)
-        screen.blit(img, (x,y))
+        windowSizeModule.screen.blit(img, (x,y))
         
 #--------------------------------------------------
 #Menu functions
@@ -81,16 +82,14 @@ def killGame():
 #--------------------------------------------------
 #Graphics
 #--------------------------------------------------
-windowLength = 960
-windowHeight = 640
-screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
+screen = windowSizeModule.screen
 pygame.display.set_caption('main action')
 clock = pygame.time.Clock() #Makes a clock for it to click
 
 #--------------------------------------------------
 #Main loop
 #--------------------------------------------------
-while True: #This manages where the game is going to run. Menu options or the game.
+while True: #This manages where the game is going to run. Menu, options or the game.
         pygame.display.update() #This will constantly update the screen
         clock.tick(60) #Sets the frame rate to 60 
         for event in pygame.event.get(): #This goes through a loop to check every input in the game

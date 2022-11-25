@@ -9,6 +9,7 @@
 #Imports
 #--------------------------------------------------
 import pygame
+import windowSizeModule
 from sys import exit
 pygame.init()
 
@@ -18,7 +19,10 @@ pygame.init()
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
+        #orginal seize (34x39). We're scalling it to (93.5, 107.25)
+        #full resolution is 960, 640
         self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
+        self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
         hero_pos_x = 100
         self.rect = self.image.get_rect(topleft = (hero_pos_x,375))        
         self.rect.centerx = windowLength / 2
@@ -31,17 +35,21 @@ class Player(pygame.sprite.Sprite):
         self.image.fill("white")
         self.image.set_colorkey("white")
         
-        self.image = pygame.image.load("graphics/Player/stand1.png")#.convert_alpha()
- 
+        #orginal seize (34x39)
+        #full resolution is 960, 640
+        self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
+        self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
+        
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()
 
 #--------------------------------------------------
 #Varibles from other python files,
 #Need to find a way to import varibles from other python files more efficently
+#News Flash. I did find a way.
 #--------------------------------------------------
-windowLength = 960
-windowHeight = 640
+windowLength = windowSizeModule.windowLength
+windowHeight = windowSizeModule.windowHeight
 screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
 
 #--------------------------------------------------
@@ -50,5 +58,7 @@ screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the ga
 all_sprites = pygame.sprite.Group()
 players = pygame.sprite.Group() 
 player = Player()
+player.rect.x = 50
+player.rect.y = 472.12226
 players.add(player) 
 all_sprites.add(player)
