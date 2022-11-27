@@ -32,63 +32,24 @@ def gameplay():#This is going to live here for the time being. This is going to 
     #This checks user inputs
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[input_map["move right"]]:
-        actionRight()
+        playerSpriteClassModule.Player.actionRight()
     if pressed_keys[input_map["move left"]]:
-        actionLeft()
+        playerSpriteClassModule.Player.actionLeft()
     if pressed_keys[input_map["jump up"]]:
-        actionJump()
+        playerSpriteClassModule.Player.actionJump()
     if pressed_keys[input_map["move dash"]]:
-        actionDash()
+        playerSpriteClassModule.Player.actionDash()
     if pressed_keys[input_map["hold up"]]:
-        actionHoldUp()
+        playerSpriteClassModule.Player.actionHoldUp()
     if pressed_keys[input_map["hold down"]]:
-        actionHoldDown()
+        playerSpriteClassModule.Player.actionHoldDown()
     if pressed_keys[input_map["gun attack"]]:
-        actionGunAttack()
+        playerSpriteClassModule.Player.actionGunAttack()
     if pressed_keys[input_map["sword attack"]]:
-        actionSwordAttack
+        playerSpriteClassModule.Player.actionSwordAttack()
     #We need an update
     playerSpriteClassModule.all_sprites.draw(screen)
     pygame.display.update()
-
-#--------------------------------------------------
-#UserInputs
-#--------------------------------------------------
-def actionRight():
-    print("Go right")
-
-def actionLeft():
-    print("Go left")
-    
-def actionDash():
-    print("Dash")
-
-def actionJump():
-    print("Jump")
-    
-def actionHoldUp():
-    print("hold up")
-    
-def actionHoldDown():
-    print("hold down")
-    
-def actionGunAttack():
-    print("Gun shot")
-
-def actionSwordAttack():
-    print("Sword Attack")
-
-#--------------------------------------------------
-#State Variables
-#--------------------------------------------------
-rightModifier = False
-LeftModifier = False
-upModifier = False
-DownModifier = False
-jumpModifier = False
-dashModifier = False
-gunModifier = False
-swordModifier = False
 
 #--------------------------------------------------
 #Graphics
@@ -99,10 +60,6 @@ screen = windowSizeModule.screen
 pygame.display.set_caption('main action')
 clock = pygame.time.Clock() #Makes a clock for it to click
 test_font = pygame.font.Font(None, 50) #This imports the font
-
-#--------------------------------------------------
-#Hero class varibles
-#--------------------------------------------------
 
 #--------------------------------------------------
 #Keybinding Variables

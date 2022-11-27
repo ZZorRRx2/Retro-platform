@@ -41,8 +41,32 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
         
         # Fetch the rectangle object that has the dimensions of the image.
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect()  
 
+    def actionRight():
+        print("go right")
+    def actionLeft():
+        print("go left")
+    def actionDash():
+        print("dash")
+    def actionJump():
+        print("jump")
+    def actionHoldUp():
+        print("hold up")
+    def actionHoldDown():
+        print("hold down")
+    def actionGunAttack():
+        print("gun shot")
+    def actionSwordAttack():
+        print("sword attack")
+    rightModifier = False
+    LeftModifier = False
+    upModifier = False
+    DownModifier = False
+    jumpModifier = False
+    dashModifier = False
+    gunModifier = False
+    swordModifier = False        
 #--------------------------------------------------
 #Varibles from other python files,
 #Need to find a way to import varibles from other python files more efficently
@@ -58,7 +82,7 @@ screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the ga
 all_sprites = pygame.sprite.Group()
 players = pygame.sprite.Group() 
 player = Player()
-player.rect.x = 50
-player.rect.y = 472.12226
+player.rect.x = 75
+player.rect.y = 480
 players.add(player) 
 all_sprites.add(player)

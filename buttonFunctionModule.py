@@ -79,8 +79,9 @@ def killGame():
 #--------------------------------------------------
 #Game state checks
 #--------------------------------------------------
-menuRun = True
+menuRun = False
 optionsRun = False
 scoreRun = False
-gameRun = False
+gameRun = True
 bindsRun = False
+#For right now we're having the gameRun varible set to True to immediately boot to the game for testing.
