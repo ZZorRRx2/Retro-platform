@@ -28,13 +28,11 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = windowLength / 2
         self.rect.bottom = windowHeight - 10
         self.speedx = 0        
-    
         # Pass in the color of the car, and its x and y position, width and height.
         # Set the background color and set it to be transparent
         self.image = pygame.Surface([windowLength, windowHeight])
         self.image.fill("white")
-        self.image.set_colorkey("white")
-        
+        self.image.set_colorkey("white")     
         #orginal seize (34x39)
         #full resolution is 960, 640
         self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
@@ -42,31 +40,10 @@ class Player(pygame.sprite.Sprite):
         
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()  
-
-    def actionRight():
-        print("go right")
-    def actionLeft():
-        print("go left")
-    def actionDash():
-        print("dash")
-    def actionJump():
-        print("jump")
-    def actionHoldUp():
-        print("hold up")
-    def actionHoldDown():
-        print("hold down")
-    def actionGunAttack():
-        print("gun shot")
-    def actionSwordAttack():
-        print("sword attack")
-    rightModifier = False
-    LeftModifier = False
-    upModifier = False
-    DownModifier = False
-    jumpModifier = False
-    dashModifier = False
-    gunModifier = False
-    swordModifier = False        
+    def rightMove(self):
+        self.rect.move_ip(5,0)
+    def leftMove(self):
+        self.rect.move_ip(-5,0)
 #--------------------------------------------------
 #Varibles from other python files,
 #Need to find a way to import varibles from other python files more efficently

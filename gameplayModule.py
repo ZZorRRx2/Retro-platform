@@ -9,7 +9,7 @@
 import pygame
 import playerSpriteClassModule
 import windowSizeModule
-from playerSpriteClassModule import Player
+from playerSpriteClassModule import *
 from sys import exit
 pygame.init()
 
@@ -30,23 +30,69 @@ def gameplay():#This is going to live here for the time being. This is going to 
     pygame.draw.rect(screen,"grey", (0,0,windowLength,windowHeight/10.67))#ceiling
     pygame.draw.rect(screen,"grey",(0,windowHeight/1.09,windowLength,windowHeight/10.6))#floor
     #This checks user inputs
+    rightModifier = False
+    leftModifier = False
+    upModifier = False
+    downModifier = False
+    jumpModifier = False
+    dashModifier = False
+    gunModifier = False
+    swordModifier = False
+    idleState = True
+    
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[input_map["move right"]]:
-        playerSpriteClassModule.Player.actionRight()
+        rightModifier = True
+        idleState = False
     if pressed_keys[input_map["move left"]]:
-        playerSpriteClassModule.Player.actionLeft()
+        leftModifier = True
+        idleState = False
     if pressed_keys[input_map["jump up"]]:
-        playerSpriteClassModule.Player.actionJump()
+        jumpModifier = True
+        idleState = False
     if pressed_keys[input_map["move dash"]]:
-        playerSpriteClassModule.Player.actionDash()
+        dashModifier = True
+        idleState = False
     if pressed_keys[input_map["hold up"]]:
-        playerSpriteClassModule.Player.actionHoldUp()
+        upModifier = True
+        idleState = False
     if pressed_keys[input_map["hold down"]]:
-        playerSpriteClassModule.Player.actionHoldDown()
+        downModifier = True
+        idleState = False
     if pressed_keys[input_map["gun attack"]]:
-        playerSpriteClassModule.Player.actionGunAttack()
+        gunModifier = True
+        idleState = False
     if pressed_keys[input_map["sword attack"]]:
-        playerSpriteClassModule.Player.actionSwordAttack()
+        swordModifier = True
+        idleState = False
+        
+    if rightModifier == True and dashModifier == True:
+        print("dash right")
+    if rightModifier == True:
+        playerSpriteClassModule.Player.rightMove(playerSpriteClassModule.player)
+        
+    if leftModifier == True and dashModifier == True:
+        print("dash left")    
+    if leftModifier == True:
+        playerSpriteClassModule.Player.leftMove(playerSpriteClassModule.player)
+    
+    if dashModifier == True and jumpModifier == True:
+        print("dash jump")
+    if dashModifier == True:
+        print("dash")    
+        
+    if jumpModifier == True:
+        print("jump")
+        
+    if gunModifier == True:
+        print("gun shot")
+    
+    if swordModifier == True and upModifier == True:
+        print("up variation attack")
+    if swordModifier == True and downModifier == True:
+        print("down variation attack")
+    if swordModifier == True:
+        print("sword attack")
     #We need an update
     playerSpriteClassModule.all_sprites.draw(screen)
     pygame.display.update()
