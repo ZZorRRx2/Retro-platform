@@ -25,10 +25,11 @@ def gameplay():#This is going to live here for the time being. This is going to 
     #full resolution is 960, 640
     pygame.display.set_caption('Mega Matt Zero/gameplay')
     screen.fill("black")
-    pygame.draw.rect(screen,"grey" , (0,0,windowLength/18.2,windowHeight))#left Wall
-    pygame.draw.rect(screen,"grey" , (windowLength/1.05,0,windowLength/18.2,windowHeight))#right Wall
-    pygame.draw.rect(screen,"grey", (0,0,windowLength,windowHeight/10.67))#ceiling
-    pygame.draw.rect(screen,"grey",(0,windowHeight/1.09,windowLength,windowHeight/10.6))#floor
+    pygame.draw.rect(screen,"grey" , leftWall )#left Wall
+    pygame.draw.rect(screen,"grey" , rightWall )#right Wall
+    pygame.draw.rect(screen,"grey", ceiling )#ceiling
+    pygame.draw.rect(screen,"grey",floor)#floor
+    
     #This checks user inputs
     rightModifier = False
     leftModifier = False
@@ -38,8 +39,12 @@ def gameplay():#This is going to live here for the time being. This is going to 
     dashModifier = False
     gunModifier = False
     swordModifier = False
-    idleState = True
     
+    #User states
+    idleState = True
+    collideWallState = False
+    
+    #This checks for user inputs 
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[input_map["move right"]]:
         rightModifier = True
@@ -65,7 +70,8 @@ def gameplay():#This is going to live here for the time being. This is going to 
     if pressed_keys[input_map["sword attack"]]:
         swordModifier = True
         idleState = False
-        
+    
+    #This responds to user inputs    
     if rightModifier == True and dashModifier == True:
         print("dash right")
     if rightModifier == True:
@@ -93,6 +99,18 @@ def gameplay():#This is going to live here for the time being. This is going to 
         print("down variation attack")
     if swordModifier == True:
         print("sword attack")
+    
+    #This checks if the user has collided with the walls
+    if player.rect.colliderect(rightWall):
+        playerSpriteClassModule.Player.awayRightWall(playerSpriteClassModule.player)
+        collideWallState = True
+    elif player.rect.colliderect(leftWall):
+        playerSpriteClassModule.Player.awayLeftWall(playerSpriteClassModule.player)
+        collideWallState = True
+    elif player.rect.colliderect(ceiling):
+        print("ceiling")
+    elif player.rect.colliderect(floor):
+        print("floor")
     #We need an update
     playerSpriteClassModule.all_sprites.draw(screen)
     pygame.display.update()
@@ -103,7 +121,14 @@ def gameplay():#This is going to live here for the time being. This is going to 
 windowLength = windowSizeModule.windowLength
 windowHeight = windowSizeModule.windowHeight
 screen = windowSizeModule.screen
-pygame.display.set_caption('main action')
+
+#Furniture locations
+leftWall = pygame.Rect((0,0,windowLength/18.2,windowHeight))
+rightWall = pygame.Rect((windowLength/1.05,0,windowLength/18.2,windowHeight))
+ceiling = pygame.Rect((0,0,windowLength,windowHeight/10.67))
+floor = pygame.Rect((0,windowHeight/1.09,windowLength,windowHeight/10.6))
+
+pygame.display.set_caption('game')
 clock = pygame.time.Clock() #Makes a clock for it to click
 test_font = pygame.font.Font(None, 50) #This imports the font
 

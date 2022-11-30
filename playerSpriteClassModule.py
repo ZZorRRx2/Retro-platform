@@ -40,10 +40,19 @@ class Player(pygame.sprite.Sprite):
         
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()  
+    #Movement
     def rightMove(self):
         self.rect.move_ip(5,0)
     def leftMove(self):
         self.rect.move_ip(-5,0)
+    
+    #Colliding with furniture
+    def awayRightWall(self):
+        self.rect.move_ip(-5,0)
+        print("rightwall")
+    def awayLeftWall(self):
+        self.rect.move_ip(5,0)
+        print("leftwall")
 #--------------------------------------------------
 #Varibles from other python files,
 #Need to find a way to import varibles from other python files more efficently
