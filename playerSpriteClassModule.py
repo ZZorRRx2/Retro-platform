@@ -46,6 +46,10 @@ class Player(pygame.sprite.Sprite):
     def leftMove(self):
         self.rect.move_ip(-5,0)
     
+    #Gravity
+    def playerFall(self):
+        self.rect.move_ip(0,5)
+    
     #Colliding with furniture
     def awayRightWall(self):
         self.rect.move_ip(-5,0)
@@ -53,6 +57,9 @@ class Player(pygame.sprite.Sprite):
     def awayLeftWall(self):
         self.rect.move_ip(5,0)
         print("leftwall")
+    def awayFloor(self):
+        self.rect.move_ip(0,-5)
+        print("floor")
 #--------------------------------------------------
 #Varibles from other python files,
 #Need to find a way to import varibles from other python files more efficently

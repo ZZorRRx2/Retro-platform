@@ -21,8 +21,6 @@ def gameplay():#This is going to live here for the time being. This is going to 
         if event.type == pygame.QUIT:
             pygame.quit()
             exit    
-    #(xLocation, yLocation,xSize,Ysize)
-    #full resolution is 960, 640
     pygame.display.set_caption('Mega Matt Zero/gameplay')
     screen.fill("black")
     pygame.draw.rect(screen,"grey" , leftWall )#left Wall
@@ -43,6 +41,7 @@ def gameplay():#This is going to live here for the time being. This is going to 
     #User states
     idleState = True
     collideWallState = False
+    fallState = True
     
     #This checks for user inputs 
     pressed_keys = pygame.key.get_pressed()
@@ -71,6 +70,10 @@ def gameplay():#This is going to live here for the time being. This is going to 
         swordModifier = True
         idleState = False
     
+    #This function will make the player always fall
+    if fallState == True:
+        playerSpriteClassModule.Player.playerFall(playerSpriteClassModule.player)
+        
     #This responds to user inputs    
     if rightModifier == True and dashModifier == True:
         print("dash right")
@@ -110,7 +113,11 @@ def gameplay():#This is going to live here for the time being. This is going to 
     elif player.rect.colliderect(ceiling):
         print("ceiling")
     elif player.rect.colliderect(floor):
-        print("floor")
+        playerSpriteClassModule.Player.awayFloor(playerSpriteClassModule.player)
+        
+    if collideWallState ==  True:
+        print("Collide")
+    
     #We need an update
     playerSpriteClassModule.all_sprites.draw(screen)
     pygame.display.update()
