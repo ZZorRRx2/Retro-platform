@@ -107,12 +107,12 @@ def gameplay():#This is going to live here for the time being. This is going to 
     if player.rect.colliderect(rightWall):
         playerSpriteClassModule.Player.awayRightWall(playerSpriteClassModule.player)
         collideWallState = True
-    elif player.rect.colliderect(leftWall):
+    if player.rect.colliderect(leftWall):
         playerSpriteClassModule.Player.awayLeftWall(playerSpriteClassModule.player)
         collideWallState = True
-    elif player.rect.colliderect(ceiling):
+    if player.rect.colliderect(ceiling):
         print("ceiling")
-    elif player.rect.colliderect(floor):
+    if player.rect.colliderect(floor):
         playerSpriteClassModule.Player.awayFloor(playerSpriteClassModule.player)
         
     if collideWallState ==  True:
