@@ -8,6 +8,7 @@
 #--------------------------------------------------
 import pygame
 import buttonFunctionModule
+import windowSizeModule
 from sys import exit
 pygame.init()
 font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
@@ -69,14 +70,14 @@ class Button(): # This code is taken from = https://www.thepythoncode.com/articl
 #--------------------------------------------------
 #Button Variables
 #--------------------------------------------------
-toGameButton = Button(30, 175, 225, 50, 'Enter game', buttonFunctionModule.openGame)
-toOptionButton = Button(30, 250, 225, 50, 'Options', buttonFunctionModule.openOptions)
-toScoresButton = Button(30, 325, 225, 50, 'Scores', buttonFunctionModule.openScores)
-toExitGameButton = Button(30, 575, 225, 50, 'Exit Game', buttonFunctionModule.killGame)
+toGameButton = Button(30, 175, 225, 60, 'Enter game', buttonFunctionModule.openGame)
+toOptionButton = Button(30, 250, 225, 60, 'Options', buttonFunctionModule.openOptions)
+toScoresButton = Button(30, 325, 225, 60, 'Scores', buttonFunctionModule.openScores)
+toExitGameButton = Button(30, 575, 225, 60, 'Exit Game', buttonFunctionModule.killGame)
 
-keyBindButton = Button(285, 250, 225, 50, 'Keybindings', buttonFunctionModule.openBinds)
-backToOptions = Button(30, 250, 225, 50, 'Back To Options', buttonFunctionModule.openOptions)
-backToMenu = Button(30, 400, 225, 50, 'Back', buttonFunctionModule.openMenu)
+keyBindButton = Button(285, 250, 225, 60, 'Keybindings', buttonFunctionModule.openBinds)
+backToOptions = Button(30, 250, 225, 60, 'Back To Options', buttonFunctionModule.openOptions)
+backToMenu = Button(30, 400, 225, 60, 'Back', buttonFunctionModule.openMenu)
 
 menuObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton]
 optionObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, keyBindButton, backToMenu]
@@ -86,9 +87,6 @@ bindObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, b
 #--------------------------------------------------
 #Window varibles
 #--------------------------------------------------
-windowLength = 960
-windowHeight = 640
-screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
-#--------------------------------------------------
-#Main module
-#--------------------------------------------------
+windowLength = windowSizeModule.windowLength
+windowHeight = windowSizeModule.windowHeight
+screen = windowSizeModule.screen

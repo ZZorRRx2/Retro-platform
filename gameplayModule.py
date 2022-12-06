@@ -7,6 +7,7 @@
 #Imports
 #--------------------------------------------------
 import pygame
+import enemyModule
 import playerSpriteClassModule
 import windowSizeModule
 from playerSpriteClassModule import *
@@ -23,11 +24,8 @@ def gameplay():#This is going to live here for the time being. This is going to 
             exit    
     pygame.display.set_caption('Mega Matt Zero/gameplay')
     screen.fill("black")
-    pygame.draw.rect(screen,"grey" , leftWall )#left Wall
-    pygame.draw.rect(screen,"grey" , rightWall )#right Wall
-    pygame.draw.rect(screen,"grey", ceiling )#ceiling
-    pygame.draw.rect(screen,"grey",floor)#floor
-    
+    for item in furnitureObjects:
+        pygame.draw.rect(screen,"grey", item)
     #This checks user inputs
     rightModifier = False
     leftModifier = False
@@ -39,9 +37,11 @@ def gameplay():#This is going to live here for the time being. This is going to 
     swordModifier = False
     
     #User states
-    idleState = True
-    collideWallState = False
-    fallState = True
+    global idleState 
+    global collideWallState 
+    global jumpState
+    global faceRightState
+    global swordState
     
     #This checks for user inputs 
     pressed_keys = pygame.key.get_pressed()
@@ -69,55 +69,22 @@ def gameplay():#This is going to live here for the time being. This is going to 
     if pressed_keys[input_map["sword attack"]]:
         swordModifier = True
         idleState = False
-    
-    #This function will make the player always fall
-    if fallState == True:
-        playerSpriteClassModule.Player.playerFall(playerSpriteClassModule.player)
-        
-    #This responds to user inputs    
-    if rightModifier == True and dashModifier == True:
-        print("dash right")
+    #Left and right
     if rightModifier == True:
-        playerSpriteClassModule.Player.rightMove(playerSpriteClassModule.player)
-        
-    if leftModifier == True and dashModifier == True:
-        print("dash left")    
+        playerSpriteClassModule.Player.playerMove(character, 10, 0)
     if leftModifier == True:
-        playerSpriteClassModule.Player.leftMove(playerSpriteClassModule.player)
+        playerSpriteClassModule.Player.playerMove(character, -10, 0)
     
-    if dashModifier == True and jumpModifier == True:
-        print("dash jump")
-    if dashModifier == True:
-        print("dash")    
-        
     if jumpModifier == True:
-        print("jump")
-        
-    if gunModifier == True:
-        print("gun shot")
-    
-    if swordModifier == True and upModifier == True:
-        print("up variation attack")
-    if swordModifier == True and downModifier == True:
-        print("down variation attack")
-    if swordModifier == True:
-        print("sword attack")
-    
-    #This checks if the user has collided with the walls
-    if player.rect.colliderect(rightWall):
-        playerSpriteClassModule.Player.awayRightWall(playerSpriteClassModule.player)
-        collideWallState = True
-    if player.rect.colliderect(leftWall):
-        playerSpriteClassModule.Player.awayLeftWall(playerSpriteClassModule.player)
-        collideWallState = True
-    if player.rect.colliderect(ceiling):
-        print("ceiling")
+        if jumpState == True:
+            playerSpriteClassModule.Player.playerMove(character, 0, -10)
+            
     if player.rect.colliderect(floor):
-        playerSpriteClassModule.Player.awayFloor(playerSpriteClassModule.player)
+        print("floor")
+        jumpState = True
+    else:
+        playerSpriteClassModule.Player.playerMove(character, 0, 10)
         
-    if collideWallState ==  True:
-        print("Collide")
-    
     #We need an update
     playerSpriteClassModule.all_sprites.draw(screen)
     pygame.display.update()
@@ -129,15 +96,26 @@ windowLength = windowSizeModule.windowLength
 windowHeight = windowSizeModule.windowHeight
 screen = windowSizeModule.screen
 
-#Furniture locations
+#Furniture Object
 leftWall = pygame.Rect((0,0,windowLength/18.2,windowHeight))
 rightWall = pygame.Rect((windowLength/1.05,0,windowLength/18.2,windowHeight))
 ceiling = pygame.Rect((0,0,windowLength,windowHeight/10.67))
 floor = pygame.Rect((0,windowHeight/1.09,windowLength,windowHeight/10.6))
+furnitureObjects = [leftWall, rightWall, ceiling, floor]
+#character furniture
+character = playerSpriteClassModule.player
 
 pygame.display.set_caption('game')
 clock = pygame.time.Clock() #Makes a clock for it to click
 test_font = pygame.font.Font(None, 50) #This imports the font
+
+#User states
+idleState = True
+collideWallState = False
+faceRightState = True
+jumpState = False
+locationState = 0 #Where 0 is on the floor, 1 is in the air, and 2 is at the wall
+swordState = 0
 
 #--------------------------------------------------
 #Keybinding Variables

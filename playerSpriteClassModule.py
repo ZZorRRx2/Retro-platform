@@ -10,6 +10,7 @@
 #--------------------------------------------------
 import pygame
 import windowSizeModule
+import projectileModule
 from sys import exit
 pygame.init()
 
@@ -19,8 +20,6 @@ pygame.init()
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        #orginal seize (34x39). We're scalling it to (93.5, 107.25)
-        #full resolution is 960, 640
         self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
         hero_pos_x = 100
@@ -39,31 +38,12 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
         
         # Fetch the rectangle object that has the dimensions of the image.
-        self.rect = self.image.get_rect()  
-    #Movement
-    def rightMove(self):
-        self.rect.move_ip(5,0)
-    def leftMove(self):
-        self.rect.move_ip(-5,0)
-    
-    #Gravity
-    def playerFall(self):
-        self.rect.move_ip(0,5)
-    
-    #Colliding with furniture
-    def awayRightWall(self):
-        self.rect.move_ip(-5,0)
-        print("rightwall")
-    def awayLeftWall(self):
-        self.rect.move_ip(5,0)
-        print("leftwall")
-    def awayFloor(self):
-        self.rect.move_ip(0,-5)
-        print("floor")
+        self.rect = self.image.get_rect()
+        
+    def playerMove(self, x , y):
+        self.rect.move_ip(x,y)
 #--------------------------------------------------
 #Varibles from other python files,
-#Need to find a way to import varibles from other python files more efficently
-#News Flash. I did find a way.
 #--------------------------------------------------
 windowLength = windowSizeModule.windowLength
 windowHeight = windowSizeModule.windowHeight
