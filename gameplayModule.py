@@ -8,11 +8,14 @@
 #--------------------------------------------------
 import pygame
 import enemyModule
+import healthModule
+import dynamicRankingModule
 import playerSpriteClassModule
 import windowSizeModule
 from playerSpriteClassModule import *
 from sys import exit
 pygame.init()
+font = pygame.font.SysFont('comic-sans', 40)
 
 #--------------------------------------------------
 #Functions
@@ -26,6 +29,7 @@ def gameplay():#This is going to live here for the time being. This is going to 
     screen.fill("black")
     for item in furnitureObjects:
         pygame.draw.rect(screen,"grey", item)
+    
     #This checks user inputs
     rightModifier = False
     leftModifier = False
@@ -39,7 +43,7 @@ def gameplay():#This is going to live here for the time being. This is going to 
     #User states
     global idleState 
     global collideWallState 
-    global jumpState
+    global jumpVelocity
     global faceRightState
     global swordState
     
@@ -69,24 +73,44 @@ def gameplay():#This is going to live here for the time being. This is going to 
     if pressed_keys[input_map["sword attack"]]:
         swordModifier = True
         idleState = False
-    #Left and right
+    
+    #Right and left movement on the floor
     if rightModifier == True:
         playerSpriteClassModule.Player.playerMove(character, 10, 0)
     if leftModifier == True:
         playerSpriteClassModule.Player.playerMove(character, -10, 0)
     
+    #Jumping control
+    #Instead of binding the time the user can jump into the air. I'm going to bind it to acceleration. A side effect of this is that this is that the jump height could essentially be binded to the clock speed of the program. But I don't really care at this point. This is going to be a permenant temporary fix.
     if jumpModifier == True:
-        if jumpState == True:
-            playerSpriteClassModule.Player.playerMove(character, 0, -10)
-            
+        if jumpVelocity >= -20:
+            playerSpriteClassModule.Player.playerMove(character, 0, jumpVelocity)
+            jumpVelocity -= 0.5
+            jumpVelocity
+        else:
+            jumpVelocity = 0
+                
+    if player.rect.colliderect(rightWall):
+            playerSpriteClassModule.Player.playerMove(character, -10, 0)
+    if player.rect.colliderect(leftWall):
+            playerSpriteClassModule.Player.playerMove(character, 10, 0)
+       
+    #Gravity works only when we are in the air        
     if player.rect.colliderect(floor):
-        print("floor")
         jumpState = True
     else:
-        playerSpriteClassModule.Player.playerMove(character, 0, 10)
+        if player.rect.colliderect(rightWall):
+            faceRightState = False
+            playerSpriteClassModule.Player.playerMove(character, 0, 5)
+        elif player.rect.colliderect(leftWall):
+            faceRightState = True
+            playerSpriteClassModule.Player.playerMove(character, 0, 5)
+        else:
+            playerSpriteClassModule.Player.playerMove(character, 0, 10)
         
     #We need an update
     playerSpriteClassModule.all_sprites.draw(screen)
+    healthModule.drawHealth
     pygame.display.update()
 
 #--------------------------------------------------
@@ -113,9 +137,10 @@ test_font = pygame.font.Font(None, 50) #This imports the font
 idleState = True
 collideWallState = False
 faceRightState = True
-jumpState = False
+jumpVelocity = 0
 locationState = 0 #Where 0 is on the floor, 1 is in the air, and 2 is at the wall
 swordState = 0
+playerHealth = healthModule.playerHealth
 
 #--------------------------------------------------
 #Keybinding Variables

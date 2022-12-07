@@ -83,6 +83,7 @@ menuObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton]
 optionObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, keyBindButton, backToMenu]
 scoreObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, backToMenu]
 bindObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, backToMenu]
+gameOverObjects = [backToMenu, toExitGameButton]
 
 #--------------------------------------------------
 #Window varibles
