@@ -75,6 +75,19 @@ def scores():
                 if event.type == pygame.QUIT:
                         pygame.quit()
                         exit()
+def gameOverScreen():
+        screen.fill("red")
+        pygame.display.set_caption("Game over")
+        draw_text("GAME OVER", font, "black", 20, 20)
+        for object in buttonObjectModule.gameOverObjects:
+                object.process()
+        pygame.display.update()
+        if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+        #displays the button to go back to the menu
+        #displays the game over screen
+
 def killGame():
         pygame.quit()
         exit()
@@ -106,3 +119,5 @@ while True: #This manages where the game is going to run. Menu, options or the g
                 gameplayModule.gameplay()                
         if buttonFunctionModule.bindsRun == True:
                 changeKeyBinds()
+        if buttonFunctionModule.endGameRun == True:
+                gameOverScreen()

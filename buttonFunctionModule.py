@@ -19,11 +19,13 @@ def openMenu():
     global scoreRun
     global gameRun
     global bindsRun
+    global endGameRun
     menuRun = True
     optionsRun = False
     scoreRun = False
     gameRun = False
     bindsRun = False
+    endGameRun = False
 
 def openOptions():
     global menuRun
@@ -72,7 +74,11 @@ def openBinds():
     scoreRun = False
     gameRun = False
     bindsRun = True
-
+def endGameRun():
+    global endGameRun
+    global gameRun
+    endGameRun = True
+    gameRun = False
 def killGame():
     pygame.quit()
     exit()
@@ -84,4 +90,5 @@ optionsRun = False
 scoreRun = False
 gameRun = True
 bindsRun = False
+endGameRun = False
 #For right now we're having the gameRun varible set to True to immediately boot to the game for testing.
