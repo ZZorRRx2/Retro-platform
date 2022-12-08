@@ -64,3 +64,9 @@ LIST OF UPDATES
 23/11/2022
 
 -The player sprite can finally be shown into the program.
+
+01-06/12/2022
+
+-Developed some form of movement system for the user. Seriously I couldn't decided how to actually move the character what a massive nightmare. 
+
+-Started work on developing the functions for the health and ranking system for the characters. (Jumping is  stupid)
