@@ -3,6 +3,7 @@
 
 Better documentation can be found on:
 https://docs.google.com/document/d/1lMcpJ2Ed9Rjp0oi873fTmWrP4RKuB8lMln2bM9TSBH8/edit?usp=sharing
+I will probably just upload the doucment to this drive once I'm finished with doing this project for my A level.
 
 LIST OF EXISTING FEATURES
 -The game could exit

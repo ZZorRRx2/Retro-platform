@@ -42,7 +42,6 @@ def gameplay():#This is going to live here for the time being. This is going to 
     
     #User states
     global idleState 
-    global collideWallState 
     global jumpAccel
     global faceRightState
     global swordState
@@ -84,7 +83,7 @@ def gameplay():#This is going to live here for the time being. This is going to 
         playerSpriteClassModule.Player.playerMove(character, -10, 0)
     
     #Jumping control
-    #Instead of binding the time the user can jump into the air. I'm going to bind it to acceleration. A side effect of this is that this is that the jump height could essentially be binded to the clock speed of the program. But I don't really care at this point. This is going to be a permenant temporary fix.
+    #Instead of binding the time the user can jump into the air. I'm going to bind it to acceleration. A side effect of this is that this is that the jump height could essentially be binded to the clock speed of the program. But I don't really care at this point. This is going to be a permenant temporary fix. 
     if jumpModifier == True:
         if jumpState == True:
             if jumpAccel >= -30:
@@ -106,15 +105,21 @@ def gameplay():#This is going to live here for the time being. This is going to 
     else:
         if player.rect.colliderect(rightWall):
             faceRightState = False
+            collideWallState = True
             playerSpriteClassModule.Player.playerMove(character, 0, 5)
         elif player.rect.colliderect(leftWall):
             faceRightState = True
+            collideWallState = True
             playerSpriteClassModule.Player.playerMove(character, 0, 5)
         else:
-            playerSpriteClassModule.Player.playerMove(character, 0, 5)
+            if jumpModifier == False:
+                jumpAccel += 5
+                playerSpriteClassModule.Player.playerMove(character, 0, jumpAccel)
+            playerSpriteClassModule.Player.playerMove(character, 0, 10)
         
     #We need an update
     playerSpriteClassModule.all_sprites.draw(screen)
+    enemyModule.all_sprites.draw(screen)
     healthModule.drawHealth
     pygame.display.update()
 
@@ -144,7 +149,7 @@ collideWallState = False
 faceRightState = True
 jumpState = False
 jumpAccel = 0
-locationState = 0 #Where 0 is on the floor, 1 is in the air, and 2 is at the wall
+wallState = False
 swordState = 0
 playerHealth = healthModule.playerHealth
 

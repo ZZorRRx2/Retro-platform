@@ -16,7 +16,7 @@ import windowSizeModule
 from buttonObjectModule import Button
 from sys import exit
 pygame.init()
-font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
+font = pygame.font.SysFont('comic-sans', 40)
 
 #--------------------------------------------------
 #Graphics texts
