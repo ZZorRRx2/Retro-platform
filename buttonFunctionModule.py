@@ -84,6 +84,7 @@ def killGame():
     exit()
 #--------------------------------------------------
 #Game state checks
+#These boolean values are to change screens and stages in the game.
 #--------------------------------------------------
 menuRun = False
 optionsRun = False

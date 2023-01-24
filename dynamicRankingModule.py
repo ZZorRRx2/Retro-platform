@@ -2,12 +2,11 @@
 #Details
 #--------------------------------------------------
 #This module of my code will be used for the dynamic ranking system
-
 #--------------------------------------------------
 #Imports
 #--------------------------------------------------
 import pygame
-import windowSizeModule
+import screenModule
 from sys import exit
 font = pygame.font.SysFont('comic-sans', 40)
 pygame.init()

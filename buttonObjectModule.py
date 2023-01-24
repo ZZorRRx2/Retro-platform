@@ -8,7 +8,7 @@
 #--------------------------------------------------
 import pygame
 import buttonFunctionModule
-import windowSizeModule
+import screenModule
 from sys import exit
 pygame.init()
 font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
@@ -69,16 +69,20 @@ class Button(): # This code is taken from = https://www.thepythoncode.com/articl
         
 #--------------------------------------------------
 #Button Variables
+#These varibles down below contain all the data for the button sizes, locations and varibles.
 #--------------------------------------------------
+#These buttons here are the buttons available in the main menu and all other menus
 toGameButton = Button(30, 175, 225, 60, 'Enter game', buttonFunctionModule.openGame)
 toOptionButton = Button(30, 250, 225, 60, 'Options', buttonFunctionModule.openOptions)
 toScoresButton = Button(30, 325, 225, 60, 'Scores', buttonFunctionModule.openScores)
 toExitGameButton = Button(30, 575, 225, 60, 'Exit Game', buttonFunctionModule.killGame)
-
+#These buttons here are available in the options menu
 keyBindButton = Button(285, 250, 225, 60, 'Keybindings', buttonFunctionModule.openBinds)
-backToOptions = Button(30, 250, 225, 60, 'Back To Options', buttonFunctionModule.openOptions)
 backToMenu = Button(30, 400, 225, 60, 'Back', buttonFunctionModule.openMenu)
-
+#These buttons here are available in the keybinding menu
+backToOptions = Button(30, 250, 225, 60, 'Back To Options', buttonFunctionModule.openOptions)
+#These are lists which show which buttons will be displayed on each menu
+#There must be a more efficent way to store all these varibles instead of having to reannounce them multiple times
 menuObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton]
 optionObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, keyBindButton, backToMenu]
 scoreObjects = [toGameButton, toOptionButton, toScoresButton, toExitGameButton, backToMenu]
@@ -88,6 +92,6 @@ gameOverObjects = [backToMenu, toExitGameButton]
 #--------------------------------------------------
 #Window varibles
 #--------------------------------------------------
-windowLength = windowSizeModule.windowLength
-windowHeight = windowSizeModule.windowHeight
-screen = windowSizeModule.screen
+windowLength = screenModule.windowLength
+windowHeight = screenModule.windowHeight
+screen = screenModule.screen

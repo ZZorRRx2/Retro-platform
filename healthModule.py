@@ -8,7 +8,7 @@
 import pygame
 import buttonFunctionModule
 import dynamicRankingModule
-import windowSizeModule
+import screenModule
 from buttonObjectModule import Button
 
 #--------------------------------------------------
