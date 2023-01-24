@@ -11,7 +11,8 @@ import enemyModule
 import healthModule
 import dynamicRankingModule
 import playerSpriteClassModule
-import windowSizeModule
+import screenModule
+import inputModule
 from playerSpriteClassModule import *
 from sys import exit
 pygame.init()
@@ -20,104 +21,37 @@ font = pygame.font.SysFont('comic-sans', 40)
 #--------------------------------------------------
 #Functions
 #--------------------------------------------------     
-def gameplay():#This is going to live here for the time being. This is going to be it's py file. afterwards all the py files will be turned into a pak file. Hopefully. If it even uses pak files
+def gameplay():
     for event in pygame.event.get():        
         if event.type == pygame.QUIT:
             pygame.quit()
-            exit    
+            exit
+    playerVelX = 0
+    playerVelY = 0
+
     pygame.display.set_caption('Mega Matt Zero/gameplay')
     screen.fill("black")
     for item in furnitureObjects:
         pygame.draw.rect(screen,"grey", item)
+    inputModule.checkInput()
     
-    #This checks user inputs
-    rightModifier = False
-    leftModifier = False
-    upModifier = False
-    downModifier = False
-    jumpModifier = False
-    dashModifier = False
-    gunModifier = False
-    swordModifier = False
+    #Moves the player 
+    if inputModule.rightModifier == True:
+        playerVelX += 10
+    if inputModule.leftModifier == True:
+        playerVelX += -10
     
-    #User states
-    global idleState 
-    global jumpAccel
-    global faceRightState
-    global swordState
-    global jumpState
-    global gravity
-    global playerV
-    
-    #This checks for user inputs 
-    pressed_keys = pygame.key.get_pressed()
-    if pressed_keys[input_map["move right"]]:
-        rightModifier = True
-        idleState = False
-    if pressed_keys[input_map["move left"]]:
-        leftModifier = True
-        idleState = False
-    if pressed_keys[input_map["jump up"]]:
-        jumpModifier = True
-        idleState = False
-    if pressed_keys[input_map["move dash"]]:
-        dashModifier = True
-        idleState = False
-    if pressed_keys[input_map["hold up"]]:
-        upModifier = True
-        idleState = False
-    if pressed_keys[input_map["hold down"]]:
-        downModifier = True
-        idleState = False
-    if pressed_keys[input_map["gun attack"]]:
-        gunModifier = True
-        idleState = False
-    if pressed_keys[input_map["sword attack"]]:
-        swordModifier = True
-        idleState = False
-    
-    #Right and left movement on the floor
-    if rightModifier == True:
-        playerSpriteClassModule.Player.playerMove(character, 10, 0)
-    if leftModifier == True:
-        playerSpriteClassModule.Player.playerMove(character, -10, 0)
-    
-    #Jumping control
-    #Instead of binding the time the user can jump into the air. I'm going to bind it to acceleration. A side effect of this is that this is that the jump height could essentially be binded to the clock speed of the program. But I don't really care at this point. This is going to be a permenant temporary fix. 
-    if jumpModifier == True:
-        if jumpState == True:
-            if jumpAccel >= -30:
-                jumpAccel -= 2.5
-                playerSpriteClassModule.Player.playerMove(character, 0, jumpAccel)
-            else:
-                jumpAccel = 0
-                jumpState = False            
-                
-    if player.rect.colliderect(rightWall):
-            playerSpriteClassModule.Player.playerMove(character, -10, 0)
-            
-    if player.rect.colliderect(leftWall):
-            playerSpriteClassModule.Player.playerMove(character, 10, 0)
-            
-    #Gravity works only when we are in the air        
+    #gravity 
     if player.rect.colliderect(floor):
-        jumpState = True
+        playerVelY -= playerVelY
     else:
-        if player.rect.colliderect(rightWall):
-            faceRightState = False
-            collideWallState = True
-            playerSpriteClassModule.Player.playerMove(character, 0, 5)
-        elif player.rect.colliderect(leftWall):
-            faceRightState = True
-            collideWallState = True
-            playerSpriteClassModule.Player.playerMove(character, 0, 5)
-        else:
-            if jumpModifier == False:
-                jumpAccel += 5
-                playerSpriteClassModule.Player.playerMove(character, 0, jumpAccel)
-            playerSpriteClassModule.Player.playerMove(character, 0, 10)
+        playerVelY += 10
         
+    #collision with enemy
+    if player.rect.colliderect(enemyModule.enemy1.rect):
+        print("collide")
     #We need an update
+    playerSpriteClassModule.Player.playerMove(player, playerVelX, playerVelY)
     playerSpriteClassModule.all_sprites.draw(screen)
     enemyModule.all_sprites.draw(screen)
     healthModule.drawHealth
@@ -126,9 +60,9 @@ def gameplay():#This is going to live here for the time being. This is going to 
 #--------------------------------------------------
 #Graphics
 #--------------------------------------------------
-windowLength = windowSizeModule.windowLength
-windowHeight = windowSizeModule.windowHeight
-screen = windowSizeModule.screen
+windowLength = screenModule.windowLength
+windowHeight = screenModule.windowHeight
+screen = screenModule.screen
 
 #Furniture Object
 leftWall = pygame.Rect((0,0,windowLength/18.2,windowHeight))
@@ -143,17 +77,5 @@ pygame.display.set_caption('game')
 clock = pygame.time.Clock() #Makes a clock for it to click
 test_font = pygame.font.Font(None, 50) #This imports the font
 
-#User states
-idleState = True
-collideWallState = False
 faceRightState = True
-jumpState = False
-jumpAccel = 0
-wallState = False
-swordState = 0
 playerHealth = healthModule.playerHealth
-
-#--------------------------------------------------
-#Keybinding Variables
-#--------------------------------------------------
-input_map = {"move right": pygame.K_d, "move left": pygame.K_a, "jump up": pygame.K_SPACE, "move dash": pygame.K_LSHIFT, "hold up": pygame.K_w, "hold down": pygame.K_s, "gun attack": pygame.K_j, "sword attack": pygame.K_k}

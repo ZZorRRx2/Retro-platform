@@ -7,46 +7,38 @@
 #--------------------------------------------------
 import pygame
 import projectileModule
-import windowSizeModule
+import screenModule
 pygame.init()
 
-class Player(pygame.sprite.Sprite):
+class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
-        self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
-        hero_pos_x = 100
-        self.rect = self.image.get_rect(topleft = (hero_pos_x,375))        
+        #self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
+        #self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
+        self.rect = pygame.Rect(100,100,100,100)
+        self.image = pygame.Surface((100, 100))
+        self.image.fill("white")
         self.rect.centerx = windowLength / 2
         self.rect.bottom = windowHeight - 10
-        self.speedx = 0        
-        # Pass in the color of the car, and its x and y position, width and height.
         # Set the background color and set it to be transparent
-        self.image = pygame.Surface([windowLength, windowHeight])
-        self.image.fill("white")
-        self.image.set_colorkey("white")     
-        #orginal seize (34x39)
-        #full resolution is 960, 640
-        self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
-        self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
-        
         # Fetch the rectangle object that has the dimensions of the image.
-        self.rect = self.image.get_rect()
         
 #--------------------------------------------------
 #Varibles from other python files,
 #--------------------------------------------------
-windowLength = windowSizeModule.windowLength
-windowHeight = windowSizeModule.windowHeight
+windowLength = screenModule.windowLength
+windowHeight = screenModule.windowHeight
 screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
 
 #--------------------------------------------------
 #Class varibles
 #--------------------------------------------------
 all_sprites = pygame.sprite.Group()
-players = pygame.sprite.Group() 
-player = Player()
-player.rect.x = 200
-player.rect.y = 480
-players.add(player) 
-all_sprites.add(player)
+
+#Enemy sprites
+enemy1 = Enemy()
+enemy1.rect.x = 200
+enemy1.rect.y = 480
+
+#Adds each enemy item into their lists.
+all_sprites.add(enemy1)
