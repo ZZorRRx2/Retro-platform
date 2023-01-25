@@ -18,18 +18,31 @@ pygame.init()
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
-        self.image = pygame.transform.scale(self.image, (windowLength/10.26737967914439, windowHeight/5.967365967365967))
-        self.hitboxImage = pygame.image.load("graphics/Player/zeroSlash.png").conver_alpha()
+        
         hero_pos_x = 75
         hero_pos_y = 480
+                
+        
+        self.image = pygame.image.load("graphics/Player/stand1.png").convert_alpha()
+        self.image = pygame.transform.scale(self.image, (windowLength/10, windowHeight/6))
+        #orginal seize (34x39)
+        #scale up is 2.75 to achieve 93.5 and 107
+        #full resolution is 960, 640
         self.rect = self.image.get_rect(topleft = (hero_pos_x,hero_pos_y))        
         self.rect.centerx = windowLength / 2
         self.rect.bottom = windowHeight - 10
+        
+        self.hitboxImage= pygame.image.load("graphics/Player/zeroSlash.png").convert_alpha()
+        self.hitboxImage = pygame.transform.scale(self.hitboxImage, (windowLength/4.71, windowHeight/5.52))
+        self.attackRect = self.hitboxImage.get_rect(topleft = (hero_pos_x,hero_pos_y))
+        #original size (74,42)
+        #scale up is 2.75 to achieve 204 and 116
+        #dividing factor = 5 and 5.52
+        
+        
         self.speedx = 0
-        self.speedy = 0
-        #orginal seize (34x39)
-        #full resolution is 960, 640
+        self.speedy = 0                
+        
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()
         

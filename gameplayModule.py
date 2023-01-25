@@ -50,6 +50,9 @@ def gameplay():
     #collision with enemy
     if player.rect.colliderect(enemyModule.enemy1.rect):
         print("collide")
+        
+    if player.attackRect.colliderect(enemyModule.enemy1.rect):
+        print("enemy hit")
     #We need an update
     playerSpriteClassModule.Player.playerMove(player, playerVelX, playerVelY)
     playerSpriteClassModule.all_sprites.draw(screen)
