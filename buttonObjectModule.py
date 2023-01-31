@@ -92,6 +92,9 @@ gameOverObjects = [backToMenu, toExitGameButton]
 #--------------------------------------------------
 #Window varibles
 #--------------------------------------------------
-windowLength = screenModule.windowLength
-windowHeight = screenModule.windowHeight
-screen = screenModule.screen
+windowLength = 960
+windowHeight = 640
+screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
+#windowLength = screenModule.windowLength
+#windowHeight = screenModule.windowHeight
+#screen = screenModule.screen

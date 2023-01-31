@@ -86,10 +86,10 @@ def killGame():
 #Game state checks
 #These boolean values are to change screens and stages in the game.
 #--------------------------------------------------
-menuRun = False
+menuRun = True
 optionsRun = False
 scoreRun = False
-gameRun = True
+gameRun = False
 bindsRun = False
 endGameRun = False
 #For right now we're having the gameRun varible set to True to immediately boot to the game for testing.

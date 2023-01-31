@@ -7,6 +7,7 @@
 #Imports
 #--------------------------------------------------
 import pygame
+import buttonObjectModule
 from sys import exit
 pygame.init()
 
