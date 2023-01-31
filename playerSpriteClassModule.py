@@ -49,6 +49,8 @@ class Player(pygame.sprite.Sprite):
     def playerMove(self, x , y):
         self.rect.x += x
         self.rect.y += y
+        self.attackRect.x += x
+        self.attackRect.y += y
 #--------------------------------------------------
 #Varibles from other python files,
 #--------------------------------------------------
