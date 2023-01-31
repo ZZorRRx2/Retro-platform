@@ -9,7 +9,6 @@
 import pygame
 import buttonFunctionModule
 import screenModule
-import windowSizeModule
 from sys import exit
 pygame.init()
 font = pygame.font.SysFont('comic-sans', 40)#Personally i don't know why this is here. But in my defence this line of code is technically importing comic sans. So i'm going to leave it here and you can't stop me
@@ -93,8 +92,8 @@ gameOverObjects = [backToMenu, toExitGameButton]
 #--------------------------------------------------
 #Window varibles
 #--------------------------------------------------
-windowLength = windowSizeModule.windowLength
-windowHeight = windowSizeModule.windowHeight
+windowLength = 960
+windowHeight = 640
 screen = pygame.display.set_mode((windowLength, windowHeight)) #This sets the games screen size/resolution
 #windowLength = screenModule.windowLength
 #windowHeight = screenModule.windowHeight
