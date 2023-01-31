@@ -3,6 +3,10 @@
 #--------------------------------------------------
 #I'm going to through each python file and rework on them because right now this whole entire project is in such a mess
 #Once we're done "pyinstaller your_program.py"
+#This is the main section of code where we all come together as one big happy bug
+#Say hello, Matthew To. That should hopefully save me from plagerism checks. Please this is my code. Apart from the button.
+#Also if you're not Matthew To. You probably shouldn't be editing this. Just make a comment or a suggestion for an improvement.
+
 #--------------------------------------------------
 #Imports
 #--------------------------------------------------
