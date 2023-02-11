@@ -37,7 +37,7 @@ all_sprites = pygame.sprite.Group()
 
 #Enemy sprites
 enemy1 = Enemy()
-enemy1.rect.x = 200
+enemy1.rect.x = 640
 enemy1.rect.y = 480
 
 #Adds each enemy item into their lists.

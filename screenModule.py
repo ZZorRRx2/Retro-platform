@@ -8,6 +8,8 @@
 #--------------------------------------------------
 import pygame
 import buttonObjectModule
+import healthModule
+import dynamicRankingModule
 from sys import exit
 pygame.init()
 
@@ -65,6 +67,7 @@ def scores():
     screen.fill("red")
     pygame.display.set_caption("Score menu")
     draw_text("Score menu", font, 'black', 30, 50)
+
     for object in buttonObjectModule.scoreObjects:
         object.process()
     pygame.display.update()
@@ -76,12 +79,18 @@ def gameOverScreen():
     screen.fill("red")
     pygame.display.set_caption("Game over")
     draw_text("GAME OVER", font, "black", 20, 20)
+    sound = pygame.mixer.Sound("hitsound.wav")
+    sound.play(10)
+    healthModule.playerHealth = 1000
+    dynamicRankingModule.currentRank = "E"
+    dynamicRankingModule.currentScore = 0
     for object in buttonObjectModule.gameOverObjects:
         object.process()
     pygame.display.update()
-    if event.type == pygame.QUIT:
-        pygame.quit()
-        exit()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
     #displays the button to go back to the menu
     #displays the game over screen
 

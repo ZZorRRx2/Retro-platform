@@ -8,6 +8,7 @@
 #Imports
 #--------------------------------------------------
 import pygame
+#import playerSpriteClassModule
 from sys import exit
 
 #--------------------------------------------------
@@ -62,7 +63,10 @@ def openGame():
     scoreRun = False
     gameRun = True
     bindsRun = False
-
+    '''
+    playerSpriteClassModule.player.rect.x = 75
+    playerSpriteClassModule.player.rect.y = 480    
+    '''
 def openBinds():
     global menuRun
     global optionsRun
@@ -74,7 +78,7 @@ def openBinds():
     scoreRun = False
     gameRun = False
     bindsRun = True
-def endGameRun():
+def endGame():
     global endGameRun
     global gameRun
     endGameRun = True
